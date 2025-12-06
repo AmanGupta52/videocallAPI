@@ -1,13 +1,15 @@
-# Use official LiveKit server image
 FROM livekit/livekit-server:latest
 
-# Expose port (Render will map this automatically)
+# Expose internal HTTP port (Render uses this)
 EXPOSE 7880
 
-# Set environment variables for LiveKit
-# Bind to all interfaces and use Render's assigned PORT
+# Use Render's assigned port
 ENV LIVEKIT_BIND_ADDR=0.0.0.0
-ENV LIVEKIT_PORT=7880
+ENV LIVEKIT_PORT=${PORT}
+ENV LIVEKIT_RTC_BIND_ADDR=0.0.0.0
+ENV LIVEKIT_RTC_PORT_TCP=7881
+ENV LIVEKIT_RTC_PORT_UDP_START=7882
+ENV LIVEKIT_RTC_PORT_UDP_END=7882
 
-# Start LiveKit in dev mode
+# Dev mode with bind addresses correctly set
 CMD ["livekit-server", "--dev"]
