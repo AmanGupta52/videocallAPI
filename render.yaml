@@ -10,3 +10,5 @@ services:
         value: devkey
       - key: LIVEKIT_API_SECRET
         value: secret
+      - key: LIVEKIT_SERVER_URL
+        value: wss://<your-service-name>.onrender.com
