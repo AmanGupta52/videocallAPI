@@ -10,3 +10,6 @@ services:
         value: devkey
       - key: LIVEKIT_API_SECRET
         value: secret
+    ports:
+      - port: 7880
+        protocol: TCP
